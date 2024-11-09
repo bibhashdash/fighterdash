@@ -4,7 +4,4 @@ body {
     /* Center horizontally */
     align-items: center;
     /* Center vertically */
-    height: 100vh;
-    /* Set the body height to full viewport height */
-    margin: 0;
 }

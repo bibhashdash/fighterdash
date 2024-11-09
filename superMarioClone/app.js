@@ -1,7 +1,3 @@
-// import { Application, Assets } from 'pixi.js';
-// import * as PIXI from 'pixi.js'
-
-
 // Asynchronous IIFE
 (async () => {
 
@@ -11,10 +7,11 @@
     app.canvas.style.borderRadius = "16px";
     document.body.appendChild(app.canvas);
     await PIXI.Assets.load([
-        "spritesheet/fighter.json",
-        "spritesheet/fighterjumpup.json",
-        "spritesheet/fighterjumpdown.json",
-        "spritesheet/bomb.png",
+        "spritesheet/fighterwalk.json",
+        "spritesheet/fighterhit.json",
+        "spritesheet/fighterdeath.json",
+        "spritesheet/time-bomb.png",
+        "spritesheet/blast.png",
         "spritesheet/cloud.png"
     ]);
     let obj = new PIXI.Graphics()
@@ -23,74 +20,114 @@
     app.stage.addChild(obj);
     window.addEventListener('resize', () => { app.renderer.resize(window.innerWidth, window.innerHeight); })
 
-    const animationsWalk = PIXI.Assets.cache.get('spritesheet/fighter.json').data.animations;
-    const animationsJumpUp = PIXI.Assets.cache.get('spritesheet/fighterjumpup.json').data.animations;
-    const animationsJumpDown = PIXI.Assets.cache.get('spritesheet/fighterjumpdown.json').data.animations;
+    const animationsWalk = PIXI.Assets.cache.get('spritesheet/fighterwalk.json').data.animations;
+    const animationsHit = PIXI.Assets.cache.get('spritesheet/fighterhit.json').data.animations;
+    const animationsDeath = PIXI.Assets.cache.get('spritesheet/fighterdeath.json').data.animations;
+
     const characterWalk = PIXI.AnimatedSprite.fromFrames(animationsWalk["walk"]);
-    const characterJumpUp = PIXI.AnimatedSprite.fromFrames(animationsJumpUp["jump"]);
-    const characterJumpDown = PIXI.AnimatedSprite.fromFrames(animationsJumpDown["jump"]);
-    const bomb = PIXI.Sprite.from("spritesheet/bomb.png");
+    const characterHit = PIXI.AnimatedSprite.fromFrames(animationsHit["fighter_hit"]);
+    const characterDeath = PIXI.AnimatedSprite.fromFrames(animationsDeath["fighter_death"]);
+
+    const bomb = PIXI.Sprite.from("spritesheet/time-bomb.png");
+    bomb.width = 100;
+    bomb.height = 100;
     const cloud = PIXI.Sprite.from("spritesheet/cloud.png");
-    //    characterWalk.height = 50;
-    //    characterWalk.width = 50;
+    const blast = PIXI.Sprite.from("spritesheet/blast.png");
+    blast.width = 150;
+    blast.height = 150;
+    blast.x = 200;
+    blast.y = 400;
     characterWalk.animationSpeed = 1 / 6;                     // 6 fps
-    characterJumpUp.animationSpeed = 1 / 12;
-    characterJumpDown.animationSpeed = 1 / 12;
-    characterWalk.position.set(200, 250);
-    characterJumpUp.position.set(200, 250);
-    characterJumpDown.position.set(200, 200);
-    bomb.position.set(window.innerWidth + 10, 150);
+    characterHit.animationSpeed = 1 / 6;                     // 6 fps
+    characterDeath.animationSpeed = 1 / 30;                     // 6 fps
+
+    characterWalk.anchor.x = 0.5;
+    characterWalk.anchor.y = 1;
+    characterWalk.x = 200;
+    characterWalk.y = 629;
+
+    characterHit.anchor.x = 0.5;
+    characterHit.anchor.y = 1;
+    characterHit.x = 200;
+    characterHit.y = 629;
+
+    characterDeath.anchor.x = 0.5;
+    characterDeath.anchor.y = 1;
+    characterDeath.x = 200;
+    characterDeath.y = 629;
+
+    bomb.anchor.x = 0.5;
+    bomb.anchor.y = 1;
+    bomb.position.set(window.innerWidth + 10, 629);
     cloud.position.set(window.innerWidth + 10, 10);
     cloud.width = 400;
     cloud.height = 200;
     characterWalk.play();
-    characterJumpUp.play();
-    characterJumpDown.play();
-    characterJumpUp.loop = false;
-    characterJumpDown.loop = false;
+    characterHit.play();
+    characterDeath.play();
+    characterHit.loop = false;
+    characterDeath.loop = false;
 
     app.stage.addChild(characterWalk);
 
     app.stage.addChild(cloud);
-    // app.stage.addChild(bomb);
-    console.log(characterJumpUp.height);
+    app.stage.addChild(bomb);
 
+    let isJumping = false;
+    let jumpForce = 15;
+    let gravity = 5;
+    let isKeyPressed = false;
+
+    window.addEventListener("keydown", e => {
+        if (e.code === "Space") {
+            isKeyPressed = true;
+        }
+    })
+
+    window.addEventListener("keyup", e => {
+        if (e.code === "Space") {
+            isKeyPressed = false;
+        }
+    })
 
     app.ticker.add(ticker => {
-        const speed = 1;
-        cloud.x = (cloud.x - speed * ticker.deltaTime - 10);
-        // bomb.x = (bomb.x - speed * ticker.deltaTime - 10);
-        // if (bomb.y === character.y) console.log("hit the guy!");
+        characterWalk.vy = 0;
+        let cloudSpeed = 5;
+        let bombSpeed = 0.2;
+        cloud.x = (cloud.x - cloudSpeed * ticker.deltaTime - 10);
+        bomb.x = (bomb.x - bombSpeed * ticker.deltaTime - 10);       
+
         if (cloud.x < 0 - cloud.width) cloud.x = window.innerWidth + 10;
-        // if (bomb.x < 0 - bomb.width) bomb.x = window.innerWidth + 10;
-        window.addEventListener("keydown", (e) => {
-            const characterPosn = characterWalk.y
-            if (e.code === "Space") {
-                // app.stage.removeChild(characterWalk)
-                // app.stage.addChild(characterJumpUp);
-                // characterJumpUp.y = characterJumpUp.y - speed * ticker.deltaTime;
-                // console.log(characterJumpUp.y);
-                // if (characterJumpUp.y < 250) {
-                //     app.stage.removeChild(characterJumpUp);
-                //     app.stage.addChild(characterJumpDown);
-                //     characterJumpDown.y = characterJumpDown.y + speed * ticker.deltaTime;
-                // }
+        if (bomb.x < 0 - bomb.width) bomb.x = window.innerWidth + 10;
 
-                characterWalk.y  = characterWalk.y - speed * ticker.deltaTime;
-                
-            }
-        })
+        if (!isJumping && !isKeyPressed && characterWalk.y < 629) characterWalk.y += (gravity);
 
-        // window.addEventListener("keyup", e => {
-        //     if (e.code === "Space") {
-        //         app.stage.removeChild(characterJumpUp);
-        //         app.stage.addChild(characterJumpDown);
-        //         characterJumpDown.y = characterJumpDown.y + speed * ticker.deltaTime;
-        //         if (characterJumpDown.y + characterJumpDown.height === obj.y) app.stage.addChild(characterWalk);
-        //     };
-        // })
+        if (isKeyPressed === true) {
+            isJumping = true;
+            characterWalk.vy = -jumpForce;
+        } else if (isKeyPressed === false) {
+            isJumping = false;
+        }
+        characterWalk.y += characterWalk.vy;
+       
+        if (characterWalk.y >= 629) {
+            characterWalk.y = 629;
+            isJumping = false;
+            characterWalk.vy = 0;
+        }
+        const bombLeftEdge = bomb.x - (bomb.width/2);
+        const bombTopEdge = bomb.y - bomb.height;
+        const characterWalkBottomEdge = characterWalk.y;
+
+        const characterWalkRightEdge = 200 + (characterWalk.width / 2)
+
+        if ((parseInt(bombLeftEdge) < characterWalkRightEdge) && (characterWalkBottomEdge >= bombTopEdge)) {
+            app.stage.removeChild(characterWalk);
+            app.stage.removeChild(bomb);
+            app.stage.addChild(characterDeath);
+            app.stage.addChild(blast);
+        }
     });
-
 }
 )();
 

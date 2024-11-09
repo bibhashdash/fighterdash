@@ -1,0 +1,79 @@
+{"frames": {
+
+"walk_01.png":
+{
+	"frame": {"x":0,"y":318,"w":119,"h":168},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":119,"h":168},
+	"sourceSize": {"w":119,"h":168}
+},
+"walk_02.png":
+{
+	"frame": {"x":109,"y":0,"w":126,"h":152},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":152},
+	"sourceSize": {"w":126,"h":152}
+},
+"walk_03.png":
+{
+	"frame": {"x":114,"y":152,"w":114,"h":166},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":166},
+	"sourceSize": {"w":114,"h":166}
+},
+"walk_04.png":
+{
+	"frame": {"x":119,"y":318,"w":106,"h":168},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":106,"h":168},
+	"sourceSize": {"w":106,"h":168}
+},
+"walk_05.png":
+{
+	"frame": {"x":0,"y":152,"w":114,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":160},
+	"sourceSize": {"w":114,"h":160}
+},
+"walk_06.png":
+{
+	"frame": {"x":0,"y":0,"w":109,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":147},
+	"sourceSize": {"w":109,"h":147}
+},
+"walk_07.png":
+{
+	"frame": {"x":0,"y":486,"w":109,"h":168},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":168},
+	"sourceSize": {"w":109,"h":168}
+},
+"walk_08.png":
+{
+	"frame": {"x":109,"y":486,"w":111,"h":174},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":111,"h":174},
+	"sourceSize": {"w":111,"h":174}
+}},
+"animations": {
+	"walk": ["walk_01.png","walk_02.png","walk_03.png","walk_04.png","walk_05.png","walk_06.png","walk_07.png","walk_08.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "fighterwalk.png",
+	"format": "RGBA8888",
+	"size": {"w":235,"h":660},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3cb21978abb002eb36f96556e454de64:3918313126be50e156e7e239d5ee1d32:2e2c10a97712a433863c1afc385dc047$"
+}
+}

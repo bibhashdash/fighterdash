@@ -1,0 +1,47 @@
+{"frames": {
+
+"fighter_hit_0048.png":
+{
+	"frame": {"x":0,"y":0,"w":108,"h":158},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":158},
+	"sourceSize": {"w":108,"h":158}
+},
+"fighter_hit_0049.png":
+{
+	"frame": {"x":108,"y":0,"w":108,"h":158},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":158},
+	"sourceSize": {"w":108,"h":158}
+},
+"fighter_hit_0050.png":
+{
+	"frame": {"x":216,"y":0,"w":106,"h":159},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":106,"h":159},
+	"sourceSize": {"w":106,"h":159}
+},
+"fighter_hit_0051.png":
+{
+	"frame": {"x":322,"y":0,"w":107,"h":159},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":159},
+	"sourceSize": {"w":107,"h":159}
+}},
+"animations": {
+	"fighter_hit": ["fighter_hit_0048.png","fighter_hit_0049.png","fighter_hit_0050.png","fighter_hit_0051.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "fighterhit.png",
+	"format": "RGBA8888",
+	"size": {"w":429,"h":159},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:681b980e1e9c116a2a475c64a68a9847:4c5f7273480710a60bbd9fe60e03d586:7919d33da058a4e430fba559c3eedbd3$"
+}
+}
