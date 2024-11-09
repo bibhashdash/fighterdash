@@ -1,0 +1,39 @@
+{"frames": {
+
+"jump_003.png":
+{
+	"frame": {"x":0,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"jump_004.png":
+{
+	"frame": {"x":512,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"jump_005.png":
+{
+	"frame": {"x":1024,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"jump": ["jump_003.png","jump_004.png","jump_005.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "fighterjumpdown.png",
+	"format": "RGBA8888",
+	"size": {"w":1536,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:15ceec43a7fbe7c55c85c40f4f3ef47d:755dfe150e8975cddbdec5c64042234e:21cc071ffd32a9fb0e9ede15c1f32f4b$"
+}
+}

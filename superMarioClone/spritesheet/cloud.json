@@ -1,0 +1,28 @@
+{"frames": {
+
+"cloud-svgrepo-com.svg":
+{
+	"frame": {"x":0,"y":0,"w":800,"h":800},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":800},
+	"sourceSize": {"w":800,"h":800}
+},
+"clouds-cloud-svgrepo-com.svg":
+{
+	"frame": {"x":800,"y":0,"w":800,"h":800},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":800},
+	"sourceSize": {"w":800,"h":800}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "cloud.png",
+	"format": "RGBA8888",
+	"size": {"w":1600,"h":800},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ef68c5ebcecbc932cb4cdbbc16c3b6fc:0e798990b7f6af80247d4a19dcf180bd:9ec8b6ce27a186caff8882d1507ee32e$"
+}
+}
