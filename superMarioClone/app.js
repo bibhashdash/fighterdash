@@ -90,10 +90,10 @@
         }
     })
 
+    let cloudSpeed = 5;
+    let bombSpeed = 0.2;
     app.ticker.add(ticker => {
         characterWalk.vy = 0;
-        let cloudSpeed = 5;
-        let bombSpeed = 0.2;
         cloud.x = (cloud.x - cloudSpeed * ticker.deltaTime - 10);
         bomb.x = (bomb.x - bombSpeed * ticker.deltaTime - 10);       
 
@@ -126,6 +126,7 @@
             app.stage.removeChild(bomb);
             app.stage.addChild(characterDeath);
             app.stage.addChild(blast);
+            app.stage.removeChild(cloud);
         }
     });
 }
